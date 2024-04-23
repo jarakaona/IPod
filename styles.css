@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.menu {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.menu button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #b74ffb;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu button:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #111111;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.gif {
+    text-align: center;
+}
+
+.bg {
+    background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+    background-repeat: repeat;
+    animation: bg-animation .2s infinite;
+    opacity: .9;
+    visibility: visible;
+}
+
+.container {
+    text-align: center;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 5px solid #ff2e7b;
+    border-radius: 5px;
+}
+
+#artist-image-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#artist-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 200;
+    font-style: normal;
+    text-align: center;
+    color: #ff2e7b;
+}
+
+input[type="text"] {
+    width: calc(100% - 100px);
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 8px 20px;
+    background-color: #ff2e7b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+h2 {
+    color: #b74ffb;
+}
+
+p {
+    color: #fff;
+}
+
+#trackList li, #trackList li a {
+    color: #fff; /* Cambiar el color del texto a blanco */
+}
+
+
+
+.top-tracks li {
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.top-tracks li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-tracks li button.addToFavorites {
+    padding: 8px 20px;
+    background-color: #ff2e7b; /* Color original del botón */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease; /* Animación de transición */
+}
+
+.top-tracks li button.addToFavorites:hover {
+    background-color: #fa77a3; /* Cambio de color al pasar el cursor */
+}
+
+.top-tracks li span {
+    flex-grow: 1; /* Ocupa todo el espacio restante */
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.artist-info-container {
+    text-align: justify;
+    margin: 20px auto;
+    max-width: 600px;
+}
+.favorite-song li{
+    list-style: none;
+    padding: 0;
+}
+
+.favorite-song li {
+    color: #fff; 
+    margin-bottom: 10px;
+}
+li {
+    color: #fff
+
+}
+.favorite-song button {
+    padding: 8px 20px;
+    background-color: #ff2e7b;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 15px; 
+    margin-left: 15px;
+    transition: background-color 0.3s ease;}
+
+@keyframes bg-animation {
+    0% {
+        transform: translate(0, 0)
+    }
+
+    10% {
+        transform: translate(-5%, -5%)
+    }
+
+    20% {
+        transform: translate(-10%, 5%)
+    }
+
+    30% {
+        transform: translate(5%, -10%)
+    }
+
+    40% {
+        transform: translate(-5%, 15%)
+    }
+
+    50% {
+        transform: translate(-10%, 5%)
+    }
+
+    60% {
+        transform: translate(15%, 0)
+    }
+
+    70% {
+        transform: translate(0, 10%)
+    }
+
+    80% {
+        transform: translate(-15%, 0)
+    }
+
+    90% {
+        transform: translate(10%, 5%)
+    }
+
+    100% {
+        transform: translate(5%, 0)
+    }
+}
