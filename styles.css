@@ -37,12 +37,12 @@ body {
 }
 
 .bg {
-    background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
-    background-repeat: repeat;
-    animation: bg-animation .2s infinite;
-    opacity: .9;
-    visibility: visible;
-}
+        background-image: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXV2dWxpZjNpY210MXZzc2JtNDgyanNhNTJmMjZucjJ3cnRlcHViNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/U4MUiNidCvO5ptFHRQ/giphy.gif');
+        background-repeat: repeat;
+        opacity: .9;
+        visibility: visible;
+    }
+    
 
 .container {
     text-align: center;

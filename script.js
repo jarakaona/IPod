@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     artistInfo = document.getElementById("artistInfo");
     topTracks = document.getElementById("topTracks");
 
-    // Verificar si los elementos existen antes de agregar event listeners
+ 
     if (searchInput) {
         searchInput.addEventListener("input", function() {
             const query = searchInput.value.trim();
@@ -115,10 +115,10 @@ function loadFavorites() {
         const favoritesData = JSON.parse(localStorage.getItem("favorites")) || [];
         displayFavorites(favoritesData);
     
-        // Obtener todos los botones de añadir a favoritos en la lista de top tracks
+        
         const addToFavoritesButtons = document.querySelectorAll(".addToFavorites");
     
-        // Recorrer cada botón y verificar si la canción correspondiente ya está en favoritos
+        
         addToFavoritesButtons.forEach(button => {
             const artistName = button.dataset.artist;
             const songName = button.dataset.song;
@@ -169,16 +169,16 @@ function isSameSong(song1, song2) {
 }
 const YoutubeApiKey = "AIzaSyD-vp0Dzuie8Fs1lyIIkbSzb-vvFZhCqys";
 
-// Función para reproducir el video de YouTube
+
 function playYouTubeVideo(videoId) {
-    // Elemento donde se mostrará el reproductor de YouTube
+  
     const playerContainer = document.getElementById("player");
     
-    // Insertar el reproductor de YouTube
+    
     playerContainer.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
 }
 
-// Evento para reproducir el video de YouTube al hacer clic en el botón correspondiente
+
 document.addEventListener("click", function(event) {
     if (event.target.classList.contains("playYouTube")) {
         const videoId = event.target.dataset.youtubeId;
@@ -186,7 +186,7 @@ document.addEventListener("click", function(event) {
     }
 });
 
-// Función para crear el botón de reproducción de YouTube para una canción favorita
+
 function createPlayButton(song) {
     const button = document.createElement("button");
     button.textContent = "▶";
@@ -194,11 +194,8 @@ function createPlayButton(song) {
     button.dataset.youtubeId = getYouTubeVideoId(song.artist, song.song);
     return button;
 }
-
-// Función para obtener el ID del video de YouTube para una canción
-// Función para obtener el ID del video de YouTube para una canción
 async function getYouTubeVideoId(artist, song) {
-    const query = `${artist} ${song} official video`; // Concatenamos el artista y la canción para formar la consulta de búsqueda
+    const query = `${artist} ${song} official video`;
     const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${encodeURIComponent(query)}&key=${YoutubeApiKey}`;
 
     try {
@@ -208,13 +205,12 @@ async function getYouTubeVideoId(artist, song) {
         }
         const data = await response.json();
         if (data.items.length > 0) {
-            return data.items[0].id.videoId; // Retornamos el ID del primer video encontrado
-        } else {
+            return data.items[0].id.videoId; 
             throw new Error('No se encontraron resultados de videos de YouTube');
         }
     } catch (error) {
         console.error('Error al obtener el ID del video de YouTube:', error.message);
-        // En caso de error, puedes manejarlo de acuerdo a tus necesidades, por ejemplo, retornando un valor predeterminado o mostrando un mensaje al usuario
+        
         return null;
 
     }
@@ -224,99 +220,9 @@ function displayFavorites(favorites) {
     favoritesList.innerHTML = "";
     favorites.forEach(song => {
         const listItem = createFavoriteListItem(song);
-        const playButton = createPlayButton(song); // Aquí agregamos el botón de reproducción de YouTube
-        listItem.appendChild(playButton); // Agregamos el botón al elemento de la lista de favoritos
+        const playButton = createPlayButton(song); 
+        listItem.appendChild(playButton); 
         favoritesList.appendChild(listItem);
     });
 }
 
-
-
-
-
-
-// document.getElementById('search-form').addEventListener('submit', function(event) {
-//     event.preventDefault(); // Evitar que el formulario se envíe automáticamente
-//     console.log("Formulario enviado"); // Verificar si se está activando el evento de envío del formulario
-//     const searchTerm = document.getElementById('search-input').value;
-//     if (searchTerm.trim() !== '') {
-//         fetchArtistInfo(searchTerm); // Llama a la función fetchArtistInfo con el término de búsqueda
-//     } else {
-//         alert('Por favor, ingresa el nombre de un artista para buscar.'); // Mostrar un mensaje si el campo de búsqueda está vacío
-//     }
-// });
-
-
-// function fetchArtistInfo(artist) {
-//     console.log("Búsqueda realizada para el artista:", artist); // Verificar si la función fetchArtistInfo se está llamando correctamente
-//     const artistInfoContainer = document.getElementById('artist-info');
-//     artistInfoContainer.innerHTML = ''; // Limpiar contenido anterior
-
-//     const artistNameElement = document.createElement('h2');
-//     artistNameElement.textContent = artist;
-//     artistInfoContainer.appendChild(artistNameElement);
-
-//     // Solicitud para obtener la información del artista
-//     fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.getInfo&artist=${artist}&api_key=9d4b089ce729c84a1029047eaa41cec8&format=json`)
-//         .then(response => response.json())
-//         .then(data => {
-//             // Aquí puedes procesar los datos recibidos y mostrar la información del artista en la página
-//             if (data.artist) {
-//                 const artistInfo = data.artist;
-//                 const artistBio = artistInfo.bio ? artistInfo.bio.summary : 'No hay información de biografía disponible para este artista.';
-
-//                 const artistBioElement = document.createElement('p');
-//                 artistBioElement.textContent = artistBio;
-//                 artistInfoContainer.appendChild(artistBioElement);
-
-//                 // Aquí puedes mostrar otras informaciones relevantes del artista, como sus canciones principales, álbumes, etc.
-//             } else {
-//                 // Manejar el caso en el que no se encuentre información del artista
-//                 const errorElement = document.createElement('p');
-//                 errorElement.textContent = 'No se encontró información para el artista especificado.';
-//                 artistInfoContainer.appendChild(errorElement);
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error fetching artist info:', error);
-//         });
-
-//     // Solicitud para obtener los álbumes principales del artista
-//     fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.getTopAlbums&artist=${artist}&api_key=9d4b089ce729c84a1029047eaa41cec8&format=json`)
-//         .then(response => response.json())
-//         .then(data => {
-//             // Tu código para procesar y mostrar los álbumes principales del artista aquí...
-//         })
-//         .catch(error => {
-//             console.error('Error fetching top albums:', error);
-//         });
-
-//     // Solicitud para obtener las canciones principales del artista
-//     fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.getTopTracks&artist=${artist}&api_key=9d4b089ce729c84a1029047eaa41cec8&format=json`)
-//         .then(response => response.json())
-//         .then(data => {
-//             // Tu código para procesar y mostrar las canciones principales del artista aquí...
-//         })
-//         .catch(error => {
-//             console.error('Error fetching top tracks:', error);
-//         });
-// }
-
-// function addToFavorites(trackName) {
-//     // Obtener la lista de canciones favoritas del almacenamiento local
-//     let favorites = localStorage.getItem('favorites');
-//     if (!favorites) {
-//         favorites = []; // Si no hay canciones favoritas, inicializar como un array vacío
-//     } else {
-//         favorites = JSON.parse(favorites); // Convertir la cadena JSON a un array
-//     }
-
-//     // Agregar la canción a la lista de favoritos si no está ya incluida
-//     if (!favorites.includes(trackName)) {
-//         favorites.push(trackName);
-//         localStorage.setItem('favorites', JSON.stringify(favorites)); // Guardar la lista actualizada en el almacenamiento local
-//         console.log('Canción agregada a favoritos:', trackName);
-//     } else {
-//         console.log('La canción ya está en la lista de favoritos.');
-//     }
-// }
