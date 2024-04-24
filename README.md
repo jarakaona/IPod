@@ -13,6 +13,8 @@ Uso
 API
 
 La aplicación utiliza la API de Last.fm para obtener información sobre artistas y sus canciones populares. Además, utiliza la API de YouTube para reproducir videos musicales.
+
+
 Tecnologías Utilizadas
 
     HTML
@@ -31,6 +33,8 @@ const YoutubeApiKey = "YOUR_YOUTUBE_API_KEY";
 Contribuir
 
 Si deseas contribuir a este proyecto, no dudes en enviar tus propuestas a través de pull requests. Cualquier sugerencia o mejora es bienvenida.
+
+
 Licencia
 
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para obtener más detalles.
