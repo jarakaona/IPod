@@ -115,23 +115,23 @@ p {
 
 .top-tracks li button.addToFavorites {
     padding: 8px 20px;
-    background-color: #ff2e7b; /* Color original del botón */
+    background-color: #ff2e7b; 
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-right: 10px;
     margin-left: 10px;
-    transition: background-color 0.3s ease; /* Animación de transición */
+    transition: background-color 0.3s ease; 
 }
 
 .top-tracks li button.addToFavorites:hover {
-    background-color: #fa77a3; /* Cambio de color al pasar el cursor */
+    background-color: #fa77a3; 
 }
 
 .top-tracks li span {
-    flex-grow: 1; /* Ocupa todo el espacio restante */
-    text-align: left; /* Alinea el texto a la izquierda */
+    flex-grow: 1; 
+    text-align: left; 
 }
 
 .artist-info-container {
