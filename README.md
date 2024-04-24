@@ -1,6 +1,7 @@
 Marisa's iPod
 
 Esta aplicación web te permite buscar información sobre artistas musicales y escuchar sus canciones populares. También puedes agregar tus canciones favoritas y reproducir sus videos musicales desde YouTube.
+
 Uso
 
     Clona este repositorio en tu máquina local.
