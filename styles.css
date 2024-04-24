@@ -163,6 +163,9 @@ li {
     margin-left: 15px;
     transition: background-color 0.3s ease;}
 
+    .playercontainer {
+        position: center;
+    }
 @keyframes bg-animation {
     0% {
         transform: translate(0, 0)
