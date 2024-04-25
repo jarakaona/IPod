@@ -47,26 +47,24 @@ function searchArtists(query) {
         .catch(error => console.log("Error fetching artists", error));
 }
 
+
+
 function getArtistInfo(artistName) {
     fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&artist=${artistName}&api_key=${apiKey}&format=json`)
         .then(response => response.json())
         .then(data => {
             const artist = data.artist;
-            artistInfo.innerHTML = `<h2>${artist.name}</h2><p>${artist.bio.summary}</p>`;
-        })
-        .catch(error => console.log("Error fetching artist info", error));
-}
-function getArtistInfo(artistName) {
-    fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&artist=${artistName}&api_key=${apiKey}&format=json`)
-        .then(response => response.json())
-        .then(data => {
-            const artist = data.artist;
-            const artistImage = Array.isArray(artist.image) && artist.image.length > 0 ? artist.image[artist.image.length - 1]['#text'] : null;
+            console.log ("imagenes de artistas", artist.image)         
+               const artistImage = Array.isArray(artist.image) && artist.image.length > 0 ? artist.image[artist.image.length - 1]['#text'] : null;
             const artistBio = artist.bio.summary;
             artistInfo.innerHTML = `<h2>${artist.name}</h2><img src="${artistImage}" alt="${artist.name}"><p>${artistBio}</p>`;
+        
+            searchArtistImage(artistName);
         })
         .catch(error => console.log("Error fetching artist info", error));
 }
+
+
 
 function getTopTracks(artistName) {
     fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.getTopTracks&artist=${artistName}&api_key=${apiKey}&format=json`)
@@ -228,3 +226,25 @@ function displayFavorites(favorites) {
 
 
 
+const unsplashAccessKey = "Buzx1SFK5JqkDtfK0nGw2LEGkXorry7dAhoIDW4nlbg";
+
+function searchArtistImage(artistName) {
+    fetch(`https://api.unsplash.com/search/photos?query=${artistName}&client_id=${unsplashAccessKey}`)
+        .then(response => response.json())
+        .then(data => {
+            const image = data.results[0];
+            if (image) {
+                const artistImage = image.urls.small; 
+                const artistImageElement = document.getElementById("artistImage");
+                artistImageElement.src = artistImage;
+                artistImageElement.alt = artistName;
+            } else {
+                
+                const defaultImage = "marisa.png"; 
+                const artistImageElement = document.getElementById("artistImage");
+                artistImageElement.src = defaultImage;
+                artistImageElement.alt = "Default Image";
+            }
+        })
+        .catch(error => console.log("Error fetching artist image", error));
+}
